@@ -1,0 +1,2464 @@
+
+WindowManager:
+    MainMenuScreen:
+    CustomerSignupScreen:
+    CustomerLoginScreen:
+    CustomerMenuScreen:
+    WorkerLoginScreen:
+    WorkerMenuScreen:
+    CustomOrderScreen:
+    CartScreen:
+    IcedDrinks:
+    HotDrinks:
+    ManualDrinks:
+    Cashier:
+    OrderInfo:
+    RecapOrder:
+    EditMenu:
+    EditDrink:
+    EditSyrup:
+
+<MainMenuScreen>:
+    name: "mainmenuscreen"
+    md_bg_color: "f4f1de"
+    MDFloatLayout:
+        pos_hint: {"center_x":0.5, "center_y": 0.5}
+        orientation: "vertical"
+        Image:
+            source: "images/logo.png"
+            size_hint_y: None
+            height: dp(150)
+            pos_hint: {"center_x":0.5, "center_y": 0.65}
+        MDLabel:
+            text: "Wisdom Cafe"
+            font_size: 60
+            font_name: "Fonts/Nexa-Heavy.ttf"
+            halign: "center"
+            color: "black"
+            pos_hint: {"center_y": 0.51}
+        MDRoundFlatButton:
+            on_release:
+                app.root.current = "workerloginscreen"
+                root.manager.transition.direction = "left"
+            size_hint: .5,.08
+            text: "WORKER"
+            font_size: 30
+            font_name: "Fonts/Nexa-Heavy.ttf"
+            pos_hint: {"center_x": .5, "center_y": 0.3}
+            md_bg_color: "4f5f80"
+            line_color: 0,0,0,0
+            text_color:"white"
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 0.1
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 40, 40, 40, 40
+                    blur_radius: 40
+        MDRoundFlatButton:
+            on_release:
+                app.root.current = "customerloginscreen"
+                root.manager.transition.direction = "left"
+            size_hint: .5,.08
+            text: "CUSTOMER"
+            font_size: 30
+            font_name: "Fonts/Nexa-Heavy.ttf"
+            pos_hint: {"center_x": .5, "center_y": 0.2}
+            md_bg_color: "4f5f80"
+            line_color: 0,0,0,0
+            text_color:"white"
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 0.1
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 40, 40, 40, 40
+                    blur_radius: 40
+
+<WorkerLoginScreen>:
+    md_bg_color: "f4f1de"
+    name: "workerloginscreen"
+    MDFloatLayout:
+        size_hint: 0.8,0.6
+        pos_hint: {"center_x":0.5,"center_y":0.5}
+        canvas.before:
+            Color:
+                rgba: 0,0,0,0.1
+            BoxShadow:
+                pos: self.pos
+                size: self.size
+                offset: 0, -10
+                spread_radius: -10, -10
+                border_radius: 40, 40, 40, 40
+                blur_radius: 40
+        canvas:
+            Color:
+                rgba: 1,1,1,1
+            RoundedRectangle:
+                size:self.size
+                pos:self.pos
+                radius: [40]
+    MDFloatLayout:
+        orientation: "vertical"
+        MDIconButton:
+            theme_icon_color: "Custom"
+            icon: "arrow-left-circle"
+            icon_color: "3d415a"
+            on_release:
+                app.root.current = "mainmenuscreen"
+                root.manager.transition.direction = "right"
+            pos_hint: {"center_x": .1, "center_y": 0.93}
+        Image:
+            source: "images/logo.png"
+            size_hint_y: None
+            height: dp(150)
+            pos_hint: {"center_x":0.5, "center_y": 0.8}
+        MDLabel:
+            text: "Wisdom Cafe"
+            font_size: 60
+            font_name: "Fonts/Nexa-Heavy.ttf"
+            halign: "center"
+            color: 0,0,0,1
+            pos_hint: {"center_y": 0.65}
+        MDLabel:
+            text: "ID"
+            size_hint: 0.7, 0.05
+            font_size: 30
+            color: 0,0,0,1
+            pos_hint: {"center_x": 0.52,"center_y": 0.57}
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDTextField:
+            id: identification
+            icon_right: "account"
+            radius: [10]
+            pos_hint: {"center_x": 0.5,"center_y": 0.52}
+            size_hint_x: 0.7
+            mode: "fill"
+            fill_color_normal: "e9edf5"
+            active_line: False
+            multiline: False
+            theme_text_color: "Custom"
+            text_color_normal: "black"
+            text_color_focus: "black"
+            on_text: self.text = self.text.replace(" ","")
+            write_tab: False
+        MDLabel:
+            text: "Password"
+            size_hint: 0.7, 0.05
+            font_size: 30
+            color: "black"
+            pos_hint: {"center_x": 0.52,"center_y": 0.45}
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDTextField:
+            id: passwrd
+            icon_right: "eye-off"
+            password: True
+            pos_hint: {"center_x": 0.5,"center_y": 0.40}
+            size_hint_x: 0.7
+            radius: [10]
+            mode: "fill"
+            fill_color_normal: "e9edf5"
+            active_line: False
+            multiline: False
+            theme_text_color: "Custom"
+            text_color_normal: "black"
+            text_color_focus: "black"
+            on_text: self.text = self.text.replace(" ","")
+            write_tab: False
+        MDBoxLayout:
+            size_hint: .7,None
+            height: "30dp"
+            pos_hint: {"center_x": 0.5,"center_y": 0.32}
+            MDCheckbox:
+                id: passwordcheckbox
+                size_hint: None, None
+                width: "30dp"
+                height: "30dp"
+                on_active:
+                    passwrd.password = not self.active
+                    passwrd.icon_right = 'eye' if self.active else 'eye-off'
+            MDLabel:
+                text: "[ref=Show Password]Show Password[/ref]"
+                markup: True
+                font_name: "Fonts/Nexa-Heavy.ttf"
+        MDRoundFlatButton:
+            size_hint: .5,.05
+            text: "LOGIN"
+            font_size: 30
+            font_name: "Fonts/Nexa-Heavy.ttf"
+            pos_hint: {"center_x": .5, "center_y": 0.2}
+            md_bg_color: "4f5f80"
+            text_color:"white"
+            line_color: 0,0,0,0
+            on_press:
+                root.do_login(identification.text, passwrd.text)
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 0.1
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 40, 40, 40, 40
+                    blur_radius: 40
+
+<CustomerLoginScreen>:
+    md_bg_color: "f4f1de"
+    name: "customerloginscreen"
+    MDFloatLayout:
+        size_hint: 0.8,0.6
+        pos_hint: {"center_x":0.5,"center_y":0.5}
+        canvas.before:
+            Color:
+                rgba: 0,0,0,0.1
+            BoxShadow:
+                pos: self.pos
+                size: self.size
+                offset: 0, -10
+                spread_radius: -10, -10
+                border_radius: 40, 40, 40, 40
+                blur_radius: 40
+        canvas:
+            Color:
+                rgba: 1,1,1,1
+            RoundedRectangle:
+                size:self.size
+                pos:self.pos
+                radius: [40]
+    MDFloatLayout:
+        orientation: "vertical"
+        MDIconButton:
+            theme_icon_color: "Custom"
+            icon: "arrow-left-circle"
+            icon_color: "3d415a"
+            on_release:
+                app.root.current = "mainmenuscreen"
+                root.manager.transition.direction = "right"
+            pos_hint: {"center_x": .1, "center_y": 0.93}
+        Image:
+            source: "images/logo.png"
+            size_hint_y: None
+            height: dp(150)
+            pos_hint: {"center_x":0.5, "center_y": 0.8}
+        MDLabel:
+            text: "Wisdom Cafe"
+            font_size: 60
+            font_name: "Fonts/Nexa-Heavy.ttf"
+            halign: "center"
+            color: 0,0,0,1
+            pos_hint: {"center_y": 0.65}
+        MDLabel:
+            text: "Phone number"
+            size_hint: 0.7, 0.05
+            font_size: 30
+            color: 0,0,0,1
+            pos_hint: {"center_x": 0.52,"center_y": 0.57}
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDTextField:
+            id: identification
+            icon_right: "account"
+            radius: [10]
+            pos_hint: {"center_x": 0.5,"center_y": 0.52}
+            size_hint_x: 0.7
+            mode: "fill"
+            fill_color_normal: "e9edf5"
+            active_line: False
+            multiline: False
+            theme_text_color: "Custom"
+            text_color_normal: "black"
+            text_color_focus: "black"
+            on_text: self.text = self.text.replace(" ","")
+            write_tab: False
+        MDLabel:
+            text: "Password"
+            size_hint: 0.7, 0.05
+            font_size: 30
+            color: "black"
+            pos_hint: {"center_x": 0.52,"center_y": 0.45}
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDTextField:
+            id: passwrd
+            icon_right: "eye-off"
+            password: True
+            pos_hint: {"center_x": 0.5,"center_y": 0.40}
+            size_hint_x: 0.7
+            radius: [10]
+            mode: "fill"
+            fill_color_normal: "e9edf5"
+            active_line: False
+            multiline: False
+            theme_text_color: "Custom"
+            text_color_normal: "black"
+            text_color_focus: "black"
+            on_text: self.text = self.text.replace(" ","")
+            write_tab: False
+        MDBoxLayout:
+            size_hint: .7,None
+            height: "30dp"
+            pos_hint: {"center_x": 0.5,"center_y": 0.32}
+            MDCheckbox:
+                id: passwordcheckbox
+                size_hint: None, None
+                width: "30dp"
+                height: "30dp"
+                on_active:
+                    passwrd.password = not self.active
+                    passwrd.icon_right = 'eye' if self.active else 'eye-off'
+            MDLabel:
+                text: "[ref=Show Password]Show Password[/ref]"
+                markup: True
+                font_name: "Fonts/Nexa-Heavy.ttf"
+        MDRectangleFlatButton:
+            line_color: 0,0,0,0
+            text: "Don't have an account? Sign up"
+            font_size: 22
+            size_hint: .5,.03
+            pos_hint: {"center_x": .5, "center_y": 0.25}
+            text_color: "4f5f80"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+            on_release:
+                root.resetForm()
+                app.root.current = "customersignupscreen"
+                root.manager.transition.direction = "left"
+        MDRoundFlatButton:
+            size_hint: .5,.05
+            text: "LOGIN"
+            font_size: 30
+            font_name: "Fonts/Nexa-Heavy.ttf"
+            pos_hint: {"center_x": .5, "center_y": 0.2}
+            md_bg_color: "4f5f80"
+            text_color:"white"
+            line_color: 0,0,0,0
+            on_press:
+                app.check_login_credentials(identification.text, passwrd.text)
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 0.1
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 40, 40, 40, 40
+                    blur_radius: 40
+
+<CustomerSignupScreen>:
+    name: "customersignupscreen"
+    md_bg_color: "f4f1df"
+    MDFloatLayout:
+        size_hint: 0.8,0.6
+        pos_hint: {"center_x":0.5,"center_y":0.5}
+        canvas.before:
+            Color:
+                rgba: 0,0,0,0.1
+            BoxShadow:
+                pos: self.pos
+                size: self.size
+                offset: 0, -10
+                spread_radius: -10, -10
+                border_radius: 40, 40, 40, 40
+                blur_radius: 40
+        canvas:
+            Color:
+                rgba: 1,1,1,1
+            RoundedRectangle:
+                size:self.size
+                pos:self.pos
+                radius: [40]
+    MDFloatLayout:
+        pos_hint: {"center_x":0.5, "center_y": 0.5}
+        orientation: "vertical"
+        MDIconButton:
+            theme_icon_color: "Custom"
+            icon_color: "3d415a"
+            icon: "arrow-left-circle"
+            on_release:
+                app.root.current = "mainmenuscreen"
+                root.manager.transition.direction = "right"
+            pos_hint: {"center_x": .1, "center_y": 0.93}
+        Image:
+            source: "images/logo.png"
+            size_hint_y: None
+            height: dp(150)
+            pos_hint: {"center_x":0.5, "center_y": 0.8}
+        MDLabel:
+            text: "Wisdom Cafe"
+            font_size: 60
+            font_name: "Fonts/Nexa-Heavy.ttf"
+            halign: "center"
+            color: "black"
+            pos_hint: {"center_y": 0.65}
+        MDLabel:
+            text: "Phone number"
+            size_hint: 0.7, 0.05
+            font_size: 30
+            color: 0,0,0,1
+            pos_hint: {"center_x": 0.52,"center_y": 0.57}
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDTextField:
+            id: identification
+            icon_right: "account"
+            radius: [10]
+            pos_hint: {"center_x": 0.5,"center_y": 0.52}
+            size_hint_x: 0.7
+            mode: "fill"
+            fill_color_normal: "e9edf5"
+            active_line: False
+            multiline: False
+            theme_text_color: "Custom"
+            text_color_normal: "black"
+            text_color_focus: "black"
+            on_text: self.text = self.text.replace(" ","")
+            write_tab: False
+        MDLabel:
+            text: "Password"
+            size_hint: 0.7, 0.05
+            font_size: 30
+            color: "black"
+            pos_hint: {"center_x": 0.52,"center_y": 0.45}
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDTextField:
+            id: passwrd
+            icon_right: "eye-off"
+            password: True
+            pos_hint: {"center_x": 0.5,"center_y": 0.40}
+            size_hint_x: 0.7
+            radius: [10]
+            mode: "fill"
+            fill_color_normal: "e9edf5"
+            active_line: False
+            multiline: False
+            theme_text_color: "Custom"
+            text_color_normal: "black"
+            text_color_focus: "black"
+            on_text: self.text = self.text.replace(" ","")
+            write_tab: False
+        MDBoxLayout:
+            size_hint: .7,None
+            height: "30dp"
+            pos_hint: {"center_x": 0.5,"center_y": 0.32}
+            MDCheckbox:
+                id: passwordcheckbox
+                size_hint: None, None
+                width: "30dp"
+                height: "30dp"
+                on_active:
+                    passwrd.password = not self.active
+                    passwrd.icon_right = 'eye' if self.active else 'eye-off'
+            MDLabel:
+                text: "[ref=Show Password]Show Password[/ref]"
+                markup: True
+                font_name: "Fonts/Nexa-Heavy.ttf"
+        MDRoundFlatButton:
+            size_hint: .5,.05
+            text: "SIGN UP"
+            font_size: 30
+            font_name: "Fonts/Nexa-Heavy.ttf"
+            pos_hint: {"center_x": .5, "center_y": 0.2}
+            md_bg_color: "4f5f80"
+            text_color:"white"
+            on_release:
+                root.send_verification_code(root.ids.identification.text,root.ids.passwrd.text)
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 0.05
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 40, 40, 40, 40
+                    blur_radius: 40
+
+<WorkerMenuScreen>:
+    name: "workermenuscreen"
+    md_bg_color: "f4f1df"
+    MDFloatLayout:
+        pos_hint: {"center_x":0.5, "center_y":0.5}
+        size_hint: 0.8,0.6
+        canvas.before:
+            Color:
+                rgba: 0,0,0,0.1
+            BoxShadow:
+                pos:self.pos
+                size:self.size
+                offset: 0, -10
+                spread_radius: -10, -10
+                border_radius: 40, 40, 40, 40
+                blur_radius: 40
+        canvas:
+            Color:
+                rgba: 1,1,1,1
+            RoundedRectangle:
+                pos:self.pos
+                size:self.size
+                radius: [40]
+    MDFloatLayout:
+        pos_hint: {"center_x":0.5, "center_y": 0.5}
+        orientation: "vertical"
+        MDIconButton:
+            theme_icon_color: "Custom"
+            icon_color: "3d415a"
+            icon: "arrow-left-circle"
+            on_release:
+                app.root.current = "workerloginscreen"
+                root.manager.transition.direction = "right"
+            pos_hint: {"center_x": .1, "center_y": 0.93}
+        MDLabel:
+            text: "Worker"
+            font_size: 40
+            color: "black"
+            pos_hint: {"center_y": 0.93}
+            halign: "center"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDLabel:
+            text: "Job Position"
+            font_size: 30
+            color: "black"
+            pos_hint: {"center_y": 0.75}
+            halign: "center"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDRectangleFlatButton:
+            text: "Iced Drinks"
+            md_bg_color: "e9edf5"
+            valign: "top"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+            text_color:"black"
+            pos_hint: {"center_x": .33, "center_y": 0.62}
+            size_hint: .3,.17
+            line_color: 0, 0, 0, 0
+            on_release:
+                app.root.current = "icedorderscreen"
+                root.manager.transition.direction = "left"
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 0.05
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 40, 40, 40, 40
+                    blur_radius: 40
+        Image:
+            source: "images/iced.png"
+            size_hint_y: None
+            height: dp(70)
+            pos_hint: {"center_x": .33, "center_y": 0.605}
+        MDRectangleFlatButton:
+            text: "Manual Brew"
+            md_bg_color: "e9edf5"
+            valign: "top"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+            text_color: "black"
+            pos_hint: {"center_x": .67, "center_y": 0.62}
+            size_hint: .3,.17
+            line_color: 0, 0, 0, 0
+            on_release:
+                app.root.current = "manualorderscreen"
+                root.manager.transition.direction = "left"
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 0.05
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 40, 40, 40, 40
+                    blur_radius: 40
+        Image:
+            source: "images/manual.png"
+            size_hint_y: None
+            height: dp(70)
+            pos_hint: {"center_x": .67, "center_y": 0.605}
+        MDRectangleFlatButton:
+            text: "Hot Drinks"
+            md_bg_color: "e9edf5"
+            valign: "top"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+            text_color: "black"
+            pos_hint: {"center_x": .33, "center_y": 0.43}
+            size_hint: .3,.17
+            line_color: 0, 0, 0, 0
+            on_release:
+                app.root.current = "hotorderscreen"
+                root.manager.transition.direction = "left"
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 0.05
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 40, 40, 40, 40
+                    blur_radius: 40
+        Image:
+            source: "images/hot.png"
+            size_hint_y: None
+            height: dp(70)
+            pos_hint: {"center_x": .33, "center_y": 0.415}
+        MDRectangleFlatButton:
+            text: "Cashier"
+            md_bg_color: "e9edf5"
+            valign: "top"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+            text_color: "black"
+            pos_hint: {"center_x": .67, "center_y": 0.43}
+            size_hint: .3,.17
+            line_color: 0, 0, 0, 0
+            on_release:
+                app.root.current = "cashierscreen"
+                root.manager.transition.direction = "left"
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 0.05
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 40, 40, 40, 40
+                    blur_radius: 40
+        Image:
+            source: "images/cashier.png"
+            size_hint_y: None
+            height: dp(70)
+            pos_hint: {"center_x": .67, "center_y": 0.415}
+        MDRectangleFlatButton:
+            text: "Recap Orders"
+            md_bg_color: "f4f1df"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+            text_color: "black"
+            pos_hint: {"center_x": .33, "center_y": 0.29}
+            size_hint: .3,.07
+            line_color: 0, 0, 0, 0
+            on_release:
+                app.root.current = "recaporderscreen"
+                root.manager.transition.direction = "left"
+                app.current_recap()
+                app.current_recap_syrup()
+                app.return_total_order()
+                app.date_with_highest_orders()
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 0.05
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 40, 40, 40, 40
+                    blur_radius: 40
+        MDRectangleFlatButton:
+            text: "Edit Menu"
+            md_bg_color: "4f5f80"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+            text_color: "white"
+            pos_hint: {"center_x": .67, "center_y": 0.29}
+            size_hint: .3,.07
+            line_color: 0, 0, 0, 0
+            on_release:
+                app.root.current = 'editmenuscreen'
+                root.manager.transition.direction = "left"
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 0.05
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 40, 40, 40, 40
+                    blur_radius: 40
+
+<CustomerMenuScreen>:
+    name: "customermenuscreen"
+    md_bg_color: "f4f1df"
+    MDFloatLayout:
+        pos_hint: {"center_x":0.5, "bottom":0}
+        size_hint: 1,0.86
+        canvas.before:
+            Color:
+                rgba: 0,0,0,0.1
+            BoxShadow:
+                pos:self.pos
+                size:self.size
+                offset: 0, -10
+                spread_radius: -10, -10
+                border_radius: 40, 40, 40, 40
+                blur_radius: 40
+        canvas:
+            Color:
+                rgba: 1,1,1,1
+            RoundedRectangle:
+                pos:self.pos
+                size:self.size
+                radius: [(80,80),(80,80),(0,0),(0,0)]
+    MDFloatLayout:
+        pos_hint: {"center_x":0.5, "center_y": 0.5}
+        orientation: "vertical"
+        MDIconButton:
+            theme_icon_color: "Custom"
+            icon_color: "3d415a"
+            icon: "arrow-left-circle"
+            on_release:
+                app.root.current = "customerloginscreen"
+                root.manager.transition.direction = "right"
+            pos_hint: {"center_x": .1, "center_y": 0.93}
+        MDIconButton:
+            theme_icon_color: "Custom"
+            icon_color: "3d415a"
+            icon: "progress-clock"
+            on_release:
+                app.root.current = "orderinfoscreen"
+                root.manager.transition.direction = "left"
+            pos_hint: {"center_x": 0.87, "center_y": 0.93}
+        MDFloatLayout:
+            size_hint: 0.75,0.7
+            pos_hint: {"center_x": 0.5, "center_y": 0.50}
+            canvas:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius: [(20, 20), (20, 20), (20, 20), (20, 20)]
+        MDScrollView:
+            do_scroll_y: True
+            do_scroll_x: False
+            size_hint: 0.9,0.65
+            pos_hint: {"center_x": 0.5, "center_y": 0.48}
+            CafeList:
+                id: menulist
+                spacing:10
+                padding:10
+                cols: 2
+        MDRoundFlatButton:
+            size_hint: .73,.04
+            text: "Review Cart"
+            font_size: 30
+            font_name: "Fonts/Nexa-Heavy.ttf"
+            pos_hint: {"center_x": .5, "center_y": 0.10}
+            md_bg_color: "4f5f80"
+            line_color: 0,0,0,0
+            text_color:"white"
+            on_release:
+                app.root.current = "cartscreen"
+                root.manager.transition.direction = "left"
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 0.1
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 40, 40, 40, 40
+                    blur_radius: 40
+
+<CustomOrderScreen>:
+    name: "customorderscreen"
+    id: custom_order_screen
+    md_bg_color: "f4f1df"
+    MDFloatLayout:
+        pos_hint: {"center_x":0.5, "center_y": 0.5}
+        orientation: "vertical"
+        MDIconButton:
+            theme_icon_color: "Custom"
+            icon_color: "3d415a"
+            icon: "arrow-left-circle"
+            on_release:
+                app.root.current = "customermenuscreen"
+                root.manager.transition.direction = "right"
+                app.untoggle_all_buttons()
+                app.reset_order()
+            pos_hint: {"center_x": .1, "center_y": 0.93}
+        MDLabel:
+            text: "Customize the order"
+            font_size: 35
+            color: "black"
+            pos_hint: {"center_y": 0.93}
+            halign: "center"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDFloatLayout:
+            size_hint: 1,0.85
+            pos_hint: {"center_x":0.5, "center_y": 0.43}
+            orientation: "vertical"
+            canvas.before:
+                Color:
+                    rgba: 0,0,0,0.1
+                BoxShadow:
+                    pos:self.pos
+                    size:self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 80, 80, 80, 80
+                    blur_radius: 40
+            canvas:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [(80, 80), (80, 80), (0, 0), (0, 0)]
+            MDLabel:
+                id: drinklabel
+                text: app.drinkTitle
+                font_size: 35
+                color: "black"
+                pos_hint: {"center_x": 0.6, "center_y": 0.93}
+                font_name: "Fonts/Nexa-Heavy.ttf"
+            MDLabel:
+                text: app.drinkDesc
+                font_size: 25
+                color: "black"
+                pos_hint: {"center_x": 0.6, "center_y": 0.90}
+                font_name: "Fonts/Nexa-ExtraLight.ttf"
+            MyScrollView:
+                id: scrollview_customer
+                pos_hint: {"center_x": 0.5, "center_y": 0.57}
+                size_hint: 0.8, 0.6
+            MDLabel:
+                text: "Item Quantity"
+                font_size: 30
+                color: "black"
+                pos_hint: {"center_x": 0.6, "center_y": 0.20}
+                font_name: "Fonts/Nexa-Heavy.ttf"
+
+            MDIconButton:
+                pos_hint: {"center_x": 0.85, "center_y": 0.20}
+                md_bg_color: "4f5f80"
+                icon_size: "10sp"
+                theme_icon_color: "Custom"
+                icon_color: "white"
+                icon: "plus"
+                on_press: app.plus()
+
+            MDLabel:
+                id: amount_ordered
+                text: app.counter
+                font_size: 25
+                color: "black"
+                pos_hint: {"center_x": 1.215, "center_y": 0.20}
+                font_name: "Fonts/Nexa-Heavy.ttf"
+
+            MDIconButton:
+                pos_hint: {"center_x": 0.6, "center_y": 0.20}
+                md_bg_color: "4f5f80"
+                icon_size: "10sp"
+                icon: "minus"
+                theme_icon_color: "Custom"
+                icon_color: "white"
+                on_press: app.minus()
+
+            MDRoundFlatButton:
+                size_hint: .8,.04
+                text: "Add to cart"
+                font_size: 30
+                font_name: "Fonts/Nexa-Heavy.ttf"
+                pos_hint: {"center_x": .5, "center_y": 0.11}
+                md_bg_color: "4f5f80"
+                line_color: 0,0,0,0
+                text_color:"white"
+                on_release:
+                    app.root.current = "cartscreen"
+                    root.manager.transition.direction = "left"
+                    app.place_order()
+                    app.untoggle_all_buttons()
+                    app.reset_order()
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 0.05
+                    BoxShadow:
+                        pos: self.pos
+                        size: self.size
+                        offset: 0, -10
+                        spread_radius: -10, -10
+                        border_radius: 40, 40, 40, 40
+                        blur_radius: 40
+
+<CartScreen>:
+    name: "cartscreen"
+    md_bg_color: "f4f1df"
+    MDFloatLayout:
+        pos_hint: {"center_x":0.5, "center_y": 0.5}
+        orientation: "vertical"
+        MDIconButton:
+            theme_icon_color: "Custom"
+            icon_color: "3d415a"
+            icon: "arrow-left-circle"
+            on_release:
+                app.root.current = "customermenuscreen"
+                root.manager.transition.direction = "right"
+            pos_hint: {"center_x": .1, "center_y": 0.93}
+        MDLabel:
+            text: "Cart"
+            font_size: 35
+            color: "black"
+            pos_hint: {"center_y": 0.93}
+            halign: "center"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDFloatLayout:
+            size_hint: 1,0.85
+            pos_hint: {"center_x":0.5, "center_y": 0.43}
+            orientation: "vertical"
+            canvas.before:
+                Color:
+                    rgba: 0,0,0,0.1
+                BoxShadow:
+                    pos:self.pos
+                    size:self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 80, 80, 80, 80
+                    blur_radius: 40
+            canvas:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [(80, 80), (80, 80), (0, 0), (0, 0)]
+        MDFloatLayout:
+            size_hint: 0.75,0.7
+            pos_hint: {"center_x": 0.5, "center_y": 0.50}
+            canvas:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius: [(20, 20), (20, 20), (20, 20), (20, 20)]
+        MDScrollView:
+            do_scroll_y: True
+            do_scroll_x: False
+            size_hint: 0.9,0.65
+            pos_hint: {"center_x": 0.5, "center_y": 0.48}
+            CartList:
+                id: cartlist
+                spacing:5
+                padding:10
+        MDRoundFlatButton:
+            size_hint: .35,.04
+            text: "Place Order"
+            font_size: 30
+            font_name: "Fonts/Nexa-Heavy.ttf"
+            pos_hint: {"center_x": .70, "center_y": 0.10}
+            md_bg_color: "4f5f80"
+            line_color: 0,0,0,0
+            text_color:"white"
+            on_release:
+                app.place_order_to_database()
+                root.cancel_order()
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 0.05
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 40, 40, 40, 40
+                    blur_radius: 40
+        MDRoundFlatButton:
+            size_hint: .35,.04
+            text: "Cancel Order"
+            font_size: 30
+            font_name: "Fonts/Nexa-Heavy.ttf"
+            pos_hint: {"center_x": .30, "center_y": 0.10}
+            md_bg_color: "f4f1df"
+            line_color: 0,0,0,0
+            text_color: "black"
+            on_press:
+                root.cancel_order()
+                app.root.current = "customermenuscreen"
+                root.manager.transition.direction = "right"
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 0.05
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 40, 40, 40, 40
+                    blur_radius: 40
+
+<IcedDrinks>:
+    md_bg_color: "f4f1de"
+    name: "icedorderscreen"
+    MDFloatLayout:
+        pos_hint: {"center_x":0.5, "center_y": 0.5}
+        orientation: "vertical"
+        MDIconButton:
+            theme_icon_color: "Custom"
+            icon_color: "3d415a"
+            icon: "arrow-left-circle"
+            on_release:
+                app.root.current = "workermenuscreen"
+                root.manager.transition.direction = "right"
+            pos_hint: {"center_x": .1, "center_y": 0.93}
+        MDLabel:
+            text: "Iced Drinks"
+            font_size: 35
+            color: "black"
+            pos_hint: {"center_y": 0.93}
+            halign: "center"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDFloatLayout:
+            size_hint: 0.8,0.75
+            pos_hint: {"center_x":0.5,"center_y":0.48}
+            canvas.before:
+                Color:
+                    rgba: 0,0,0,0.1
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 40, 40, 40, 40
+                    blur_radius: 40
+            canvas:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius: [40]
+        MDScrollView:
+            do_scroll_y: True
+            do_scroll_x: False
+            size_hint: 0.73,0.73
+            pos_hint: {"center_x": 0.5, "center_y": 0.48}
+            DrinkList:
+                id: icedorderlist
+                spacing:5
+                padding:10
+
+<ManualDrinks>:
+    md_bg_color: "f4f1de"
+    name: "manualorderscreen"
+    MDFloatLayout:
+        pos_hint: {"center_x":0.5, "center_y": 0.5}
+        orientation: "vertical"
+        MDIconButton:
+            theme_icon_color: "Custom"
+            icon_color: "3d415a"
+            icon: "arrow-left-circle"
+            on_release:
+                app.root.current = "workermenuscreen"
+                root.manager.transition.direction = "right"
+            pos_hint: {"center_x": .1, "center_y": 0.93}
+        MDLabel:
+            text: "Manual Drinks"
+            font_size: 35
+            color: "black"
+            pos_hint: {"center_y": 0.93}
+            halign: "center"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDFloatLayout:
+            size_hint: 0.8,0.75
+            pos_hint: {"center_x":0.5,"center_y":0.48}
+            canvas.before:
+                Color:
+                    rgba: 0,0,0,0.1
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 40, 40, 40, 40
+                    blur_radius: 40
+            canvas:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius: [40]
+        MDScrollView:
+            do_scroll_y: True
+            do_scroll_x: False
+            size_hint: 0.73,0.73
+            pos_hint: {"center_x": 0.5, "center_y": 0.48}
+            DrinkList:
+                id: manualorderlist
+                spacing:5
+                padding:10
+
+<HotDrinks>:
+    md_bg_color: "f4f1de"
+    name: "hotorderscreen"
+    MDFloatLayout:
+        pos_hint: {"center_x":0.5, "center_y": 0.5}
+        orientation: "vertical"
+        MDIconButton:
+            theme_icon_color: "Custom"
+            icon_color: "3d415a"
+            icon: "arrow-left-circle"
+            on_release:
+                app.root.current = "workermenuscreen"
+                root.manager.transition.direction = "right"
+            pos_hint: {"center_x": .1, "center_y": 0.93}
+        MDLabel:
+            text: "Hot Drinks"
+            font_size: 35
+            color: "black"
+            pos_hint: {"center_y": 0.93}
+            halign: "center"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDFloatLayout:
+            size_hint: 0.8,0.75
+            pos_hint: {"center_x":0.5,"center_y":0.48}
+            canvas.before:
+                Color:
+                    rgba: 0,0,0,0.1
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 40, 40, 40, 40
+                    blur_radius: 40
+            canvas:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius: [40]
+        MDScrollView:
+            do_scroll_y: True
+            do_scroll_x: False
+            size_hint: 0.73,0.73
+            pos_hint: {"center_x": 0.5, "center_y": 0.48}
+            DrinkList:
+                id: hotorderlist
+                spacing:5
+                padding:10
+
+<Cashier>:
+    md_bg_color: "f4f1de"
+    name: "cashierscreen"
+    MDFloatLayout:
+        pos_hint: {"center_x":0.5, "center_y": 0.5}
+        orientation: "vertical"
+        MDIconButton:
+            theme_icon_color: "Custom"
+            icon_color: "3d415a"
+            icon: "arrow-left-circle"
+            on_release:
+                app.root.current = "workermenuscreen"
+                root.manager.transition.direction = "right"
+            pos_hint: {"center_x": .1, "center_y": 0.93}
+        MDLabel:
+            text: "Cashier"
+            font_size: 35
+            color: "black"
+            pos_hint: {"center_y": 0.93}
+            halign: "center"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDFloatLayout:
+            size_hint: 0.8,0.75
+            pos_hint: {"center_x":0.5,"center_y":0.48}
+            canvas.before:
+                Color:
+                    rgba: 0,0,0,0.1
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 40, 40, 40, 40
+                    blur_radius: 40
+            canvas:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius: [40]
+        MDScrollView:
+            do_scroll_y: True
+            do_scroll_x: False
+            size_hint: 0.73,0.73
+            pos_hint: {"center_x": 0.5, "center_y": 0.48}
+            OrderList:
+                id: allorderlist
+                spacing:5
+                padding:10
+
+<OrderInfo>:
+    name: "orderinfoscreen"
+    md_bg_color: "f4f1de"
+    MDFloatLayout:
+        pos_hint: {"center_x":0.5, "center_y": 0.5}
+        orientation: "vertical"
+        MDIconButton:
+            theme_icon_color: "Custom"
+            icon_color: "3d415a"
+            icon: "arrow-left-circle"
+            on_release:
+                app.root.current = "customermenuscreen"
+                root.manager.transition.direction = "right"
+            pos_hint: {"center_x": .1, "center_y": 0.93}
+        MDLabel:
+            text: "Order Information"
+            font_size: 35
+            color: "black"
+            pos_hint: {"center_y": 0.93}
+            halign: "center"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDLabel:
+            text: "Ongoing"
+            font_size: 30
+            color: "black"
+            pos_hint: {"center_x":0.5,"center_y":0.86}
+            halign: "left"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+            size_hint: 0.78,1
+        MDFloatLayout:
+            size_hint: 0.8,0.07
+            pos_hint: {"center_x":0.5,"center_y":0.8}
+            canvas.before:
+                Color:
+                    rgba: 0,0,0,0.1
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 40, 40, 40, 40
+                    blur_radius: 40
+            canvas:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius: [40]
+        MDLabel:
+            text: "None"
+            id: ongoing_order_number
+            font_size: 30
+            color: "black"
+            pos_hint: {"center_x":0.55,"center_y":0.8}
+            halign: "left"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+            size_hint: 0.8,1
+        MDLabel:
+            text: "Order History"
+            font_size: 30
+            color: "black"
+            pos_hint: {"center_x":0.5,"center_y":0.675}
+            halign: "left"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+            size_hint: 0.78,1
+        MDFloatLayout:
+            size_hint: 0.8,0.5
+            pos_hint: {"center_x":0.5,"center_y":0.4}
+            canvas.before:
+                Color:
+                    rgba: 0,0,0,0.1
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 40, 40, 40, 40
+                    blur_radius: 40
+            canvas:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius: [40]
+            MDScrollView:
+                do_scroll_y: True
+                do_scroll_x: False
+                size_hint: 0.9,0.9
+                pos_hint: {"center_x": 0.5, "center_y": 0.48}
+                OrderList:
+                    id: orderhistorylist
+                    spacing:5
+                    padding:10
+
+<RecapOrder>:
+    name: "recaporderscreen"
+    md_bg_color: "f4f1de"
+    MDFloatLayout:
+        pos_hint: {"center_x":0.5, "center_y": 0.5}
+        orientation: "vertical"
+        MDIconButton:
+            theme_icon_color: "Custom"
+            icon_color: "3d415a"
+            icon: "arrow-left-circle"
+            on_release:
+                app.root.current = "workermenuscreen"
+                root.manager.transition.direction = "right"
+            pos_hint: {"center_x": .1, "center_y": 0.93}
+        MDLabel:
+            text: "Recap Today's Orders"
+            font_size: 35
+            color: "black"
+            pos_hint: {"center_y": 0.93}
+            halign: "center"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDFloatLayout:
+            size_hint: 0.35,0.2
+            pos_hint: {"center_x":0.70,"center_y":0.73}
+            canvas.before:
+                Color:
+                    rgba: 0,0,0,0.1
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 40, 40, 40, 40
+                    blur_radius: 40
+            canvas:
+                Color:
+                    rgba: 79/255, 95/255, 128/255, 0.7
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius: [40]
+        MDLabel:
+            text: "This Week's"
+            font_size: 25
+            color: "white"
+            pos_hint: {"center_x":0.70,"center_y":0.8}
+            halign: "center"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDLabel:
+            text: " "
+            id: weekly_total
+            font_size: 100
+            color: "white"
+            pos_hint: {"center_x":0.70,"center_y":0.72}
+            halign: "center"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDFloatLayout:
+            size_hint: 0.35,0.2
+            pos_hint: {"center_x":0.30,"center_y":0.73}
+            canvas.before:
+                Color:
+                    rgba: 0,0,0,0.1
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 40, 40, 40, 40
+                    blur_radius: 40
+            canvas:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius: [40]
+        MDLabel:
+            text: "Monthly Highest"
+            font_size: 25
+            color: "black"
+            pos_hint: {"center_x":0.30,"center_y":0.8}
+            halign: "center"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDLabel:
+            text: " "
+            id: monthly_highest
+            font_size: 100
+            color: "black"
+            pos_hint: {"center_x":0.30,"center_y":0.72}
+            halign: "center"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDFloatLayout:
+            size_hint: 0.75,0.5
+            pos_hint: {"center_x":0.5,"center_y":0.35}
+            canvas.before:
+                Color:
+                    rgba: 0,0,0,0.1
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 40, 40, 40, 40
+                    blur_radius: 40
+            canvas:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius: [40]
+        MDFloatLayout:
+            size_hint: 0.65,0.2
+            pos_hint: {"center_x":0.5,"center_y":0.47}
+            canvas:
+                Color:
+                    rgba: 233/255, 237/255, 245/255, 1
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius: [10]
+        MDLabel:
+            text: "Favorite Drink of the Week"
+            font_size: 30
+            color: "black"
+            pos_hint: {"center_x":0.5,"center_y":0.53}
+            halign: "center"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDFloatLayout:
+            size_hint: 0.5,0.09
+            pos_hint: {"center_x":0.5,"center_y":0.45}
+            canvas:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius: [10]
+        MDLabel:
+            text: " "
+            id: top_drink
+            font_size: 35
+            color: "black"
+            pos_hint: {"center_x":0.41,"center_y":0.45}
+            halign: "center"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDFloatLayout:
+            size_hint: 0.18,0.09
+            pos_hint: {"center_x":0.66,"center_y":0.45}
+            canvas:
+                Color:
+                    rgba:  79/255, 95/255, 128/255, 1
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius: [10]
+        MDLabel:
+            text: "-"
+            id: top_drink_no
+            font_size: 70
+            color: "white"
+            pos_hint: {"center_x":0.66,"center_y":0.46}
+            halign: "center"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDLabel:
+            text: "Orders"
+            id: drink_order_label
+            font_size: 25
+            color: "white"
+            pos_hint: {"center_x":0.66,"center_y":0.43}
+            halign: "center"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDFloatLayout:
+            size_hint: 0.65,0.2
+            pos_hint: {"center_x":0.5,"center_y":0.24}
+            canvas:
+                Color:
+                    rgba: 233/255, 237/255, 245/255, 1
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius: [10]
+        MDLabel:
+            text: "Favorite Syrup of the Week"
+            font_size: 30
+            color: "black"
+            pos_hint: {"center_x":0.5,"center_y":0.30}
+            halign: "center"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDFloatLayout:
+            size_hint: 0.5,0.09
+            pos_hint: {"center_x":0.5,"center_y":0.22}
+            canvas:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius: [10]
+        MDLabel:
+            text: " "
+            id: top_syrup
+            font_size: 35
+            color: "black"
+            pos_hint: {"center_x":0.41,"center_y":0.22}
+            halign: "center"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDFloatLayout:
+            size_hint: 0.18,0.09
+            pos_hint: {"center_x":0.66,"center_y":0.22}
+            canvas:
+                Color:
+                    rgba:  79/255, 95/255, 128/255, 1
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius: [10]
+        MDLabel:
+            text: "-"
+            id: top_syrup_no
+            font_size: 70
+            color: "white"
+            pos_hint: {"center_x":0.66,"center_y":0.23}
+            halign: "center"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDLabel:
+            text: "Orders"
+            id: syrup_order_label
+            font_size: 25
+            color: "white"
+            pos_hint: {"center_x":0.66,"center_y":0.20}
+            halign: "center"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+
+<EditMenu>:
+    name: "editmenuscreen"
+    md_bg_color: "f4f1de"
+    MDFloatLayout:
+        pos_hint: {"center_x":0.5, "center_y": 0.5}
+        orientation: "vertical"
+        MDIconButton:
+            theme_icon_color: "Custom"
+            icon_color: "3d415a"
+            icon: "arrow-left-circle"
+            on_release:
+                app.root.current = "workermenuscreen"
+                root.manager.transition.direction = "right"
+            pos_hint: {"center_x": .1, "center_y": 0.93}
+        MDLabel:
+            text: "Edit Menu"
+            font_size: 35
+            color: "black"
+            pos_hint: {"center_y": 0.93}
+            halign: "center"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDIconButton:
+            theme_icon_color: "Custom"
+            icon_color: "3d415a"
+            icon: "plus-box-multiple-outline"
+            on_release:
+                app.root.current = "editdrinkscreen"
+                root.manager.transition.direction = "left"
+            pos_hint: {"center_x": 0.87, "center_y": 0.93}
+        MDFloatLayout:
+            size_hint: 1,0.65
+            pos_hint: {"center_x":0.5,"center_y":0.52}
+            canvas.before:
+                Color:
+                    rgba: 0,0,0,0.1
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 40, 40, 40, 40
+                    blur_radius: 40
+            canvas:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius: [40]
+        MDScrollView:
+            do_scroll_y: True
+            do_scroll_x: False
+            size_hint: 0.9,0.58
+            pos_hint: {"center_x": 0.5, "center_y": 0.52}
+            CafeList:
+                id: editmenulist
+                spacing:10
+                padding:10
+                cols: 2
+        MDRoundFlatButton:
+            size_hint: .73,.065
+            text: "Edit syrups"
+            font_size: 30
+            font_name: "Fonts/Nexa-Heavy.ttf"
+            pos_hint: {"center_x": .5, "center_y": 0.10}
+            md_bg_color: "4f5f80"
+            line_color: 0,0,0,0
+            text_color:"white"
+            on_release:
+                app.root.current = "editsyrupscreen"
+                root.manager.transition.direction = "left"
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 0.1
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 40, 40, 40, 40
+                    blur_radius: 40
+
+<EditDrink>:
+    name: "editdrinkscreen"
+    md_bg_color: "f4f1de"
+    MDFloatLayout:
+        pos_hint: {"center_x":0.5, "center_y": 0.5}
+        orientation: "vertical"
+        MDIconButton:
+            theme_icon_color: "Custom"
+            icon_color: "3d415a"
+            icon: "arrow-left-circle"
+            on_release:
+                app.root.current = "editmenuscreen"
+                root.manager.transition.direction = "right"
+                app.reset_toggle_options()
+            pos_hint: {"center_x": .1, "center_y": 0.93}
+        MDFloatLayout:
+            size_hint: 1,0.85
+            pos_hint: {"center_x":0.5, "center_y": 0.43}
+            orientation: "vertical"
+            canvas.before:
+                Color:
+                    rgba: 0,0,0,0.1
+                BoxShadow:
+                    pos:self.pos
+                    size:self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 80, 80, 80, 80
+                    blur_radius: 40
+            canvas:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [(80, 80), (80, 80), (0, 0), (0, 0)]
+            MDLabel:
+                text: "Drink title"
+                font_size: 30
+                color: "black"
+                pos_hint: {"center_x": 0.6,"center_y": 0.9}
+                halign: "left"
+                font_name: "Fonts/Nexa-Heavy.ttf"
+            MDTextField:
+                id: name_field
+                radius: [10]
+                pos_hint: {"center_x": 0.5,"center_y": 0.835}
+                size_hint_x: 0.8
+                mode: "fill"
+                fill_color_normal: "e9edf5"
+                active_line: False
+                multiline: False
+                theme_text_color: "Custom"
+                text_color_normal: "black"
+                text_color_focus: "black"
+                write_tab: False
+            MDLabel:
+                text: "Drink description"
+                font_size: 30
+                color: "black"
+                pos_hint: {"center_x": 0.6,"center_y": 0.75}
+                halign: "left"
+                font_name: "Fonts/Nexa-Heavy.ttf"
+            MDTextField:
+                id: desc_field
+                radius: [10]
+                pos_hint: {"center_x": 0.5,"center_y": 0.685}
+                size_hint_x: 0.8
+                mode: "fill"
+                fill_color_normal: "e9edf5"
+                active_line: False
+                multiline: False
+                theme_text_color: "Custom"
+                text_color_normal: "black"
+                text_color_focus: "black"
+                write_tab: False
+            MDLabel:
+                text: "Include option(s):"
+                font_size: 30
+                color: "black"
+                pos_hint: {"center_x": 0.6,"center_y": 0.6}
+                halign: "left"
+                font_name: "Fonts/Nexa-Heavy.ttf"
+            MenuButton:
+                id: ice_toggle
+                pos_hint: {"center_x": 0.5,"center_y": 0.535}
+                text: "Ice"
+                text_color: "black"
+                size_hint_x: 0.8
+                line_color: "e9edf5"
+                font_name: "Fonts/Nexa-ExtraLight.ttf"
+                halign: "left"
+            MenuButton:
+                id: syrup_toggle
+                pos_hint: {"center_x": 0.5,"center_y": 0.465}
+                text: "Syrup"
+                text_color: "black"
+                size_hint_x: 0.8
+                line_color: "e9edf5"
+                font_name: "Fonts/Nexa-ExtraLight.ttf"
+                halign: "left"
+            MDLabel:
+                text: "Post:"
+                font_size: 30
+                color: "black"
+                pos_hint: {"center_x": 0.6,"center_y": 0.41}
+                halign: "left"
+                font_name: "Fonts/Nexa-Heavy.ttf"
+            MDLabel:
+                pos_hint: {"center_x": 0.55,"center_y": 0.365}
+                text: "Iced"
+                text_color: "black"
+                size_hint_x: 0.8
+                font_name: "Fonts/Nexa-ExtraLight.ttf"
+                halign: "left"
+                font_size: 25
+            MDCheckbox:
+                id: check_iced
+                size_hint: 0.1,0.1
+                pos_hint: {"center_x": 0.8,"center_y": 0.365}
+            MDLabel:
+                pos_hint: {"center_x": 0.55,"center_y": 0.305}
+                text: "Hot"
+                text_color: "black"
+                size_hint_x: 0.8
+                font_name: "Fonts/Nexa-ExtraLight.ttf"
+                halign: "left"
+                font_size: 25
+            MDCheckbox:
+                id: check_hot
+                size_hint: 0.1,0.1
+                pos_hint: {"center_x": 0.8,"center_y": 0.305}
+            MDLabel:
+                pos_hint: {"center_x": 0.55,"center_y": 0.245}
+                text: "Manual"
+                text_color: "black"
+                size_hint_x: 0.8
+                font_name: "Fonts/Nexa-ExtraLight.ttf"
+                halign: "left"
+                font_size: 25
+            MDCheckbox:
+                id: check_manual
+                size_hint: 0.1,0.1
+                pos_hint: {"center_x": 0.8,"center_y": 0.245}
+            MDLabel:
+                text: "Upload Image"
+                font_size: 30
+                color: "black"
+                pos_hint: {"center_x": 0.6,"center_y": 0.18}
+                halign: "left"
+                font_name: "Fonts/Nexa-Heavy.ttf"
+            MDIconButton:
+                theme_icon_color: "Custom"
+                icon_color: "3d415a"
+                icon: "upload"
+                pos_hint: {"center_x": .80, "center_y": 0.18}
+                on_release:
+                    root.upload_image(root)
+        MDLabel:
+            text: "Edit the drink"
+            font_size: 35
+            color: "black"
+            pos_hint: {"center_y": 0.93}
+            halign: "center"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDRoundFlatButton:
+            size_hint: .73,.045
+            text: "Save options"
+            font_size: 30
+            font_name: "Fonts/Nexa-Heavy.ttf"
+            pos_hint: {"center_x": .5, "center_y": 0.10}
+            md_bg_color: "4f5f80"
+            line_color: 0,0,0,0
+            text_color:"white"
+            on_release:
+                app.root.current = "editmenuscreen"
+                root.manager.transition.direction = "right"
+                root.save_options()
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 0.1
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 40, 40, 40, 40
+                    blur_radius: 40
+
+<EditSyrup>:
+    name: "editsyrupscreen"
+    md_bg_color: "f4f1de"
+    MDFloatLayout:
+        pos_hint: {"center_x":0.5, "center_y": 0.5}
+        orientation: "vertical"
+        MDIconButton:
+            theme_icon_color: "Custom"
+            icon_color: "3d415a"
+            icon: "arrow-left-circle"
+            on_release:
+                app.root.current = "editmenuscreen"
+                root.manager.transition.direction = "right"
+            pos_hint: {"center_x": .1, "center_y": 0.93}
+        MDLabel:
+            text: "Edit Syrups"
+            font_size: 35
+            color: "black"
+            pos_hint: {"center_y": 0.93}
+            halign: "center"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDFloatLayout:
+            size_hint: 1,0.4
+            pos_hint: {"center_x": 0.5, "center_y": 0.65}
+            canvas.before:
+                Color:
+                    rgba: 0,0,0,0.1
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 40, 40, 40, 40
+                    blur_radius: 40
+            canvas:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius: [40]
+        MDScrollView:
+            do_scroll_y: True
+            do_scroll_x: False
+            size_hint: 0.9,0.35
+            pos_hint: {"center_x": 0.5, "center_y": 0.65}
+            MDList:
+                id: syruplist
+                spacing:10
+                padding:10
+        MDFloatLayout:
+            size_hint: 0.8,0.3
+            pos_hint: {"center_x": 0.5, "center_y": 0.25}
+            canvas.before:
+                Color:
+                    rgba: 0,0,0,0.1
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 40, 40, 40, 40
+                    blur_radius: 40
+            canvas:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius: [40]
+        MDLabel:
+            pos_hint: {"center_x": 0.55,"center_y": 0.33}
+            text: "Syrup name"
+            text_color: "black"
+            size_hint_x: 0.8
+            font_name: "Fonts/Nexa-Heavy.ttf"
+            halign: "left"
+            font_size: 30
+        MDTextField:
+            id: syrup_name
+            radius: [10]
+            pos_hint: {"center_x": 0.5,"center_y": 0.27}
+            size_hint_x: 0.7
+            mode: "fill"
+            fill_color_normal: "e9edf5"
+            active_line: False
+            multiline: False
+            theme_text_color: "Custom"
+            text_color_normal: "black"
+            text_color_focus: "black"
+            write_tab: False
+        MDRoundFlatButton:
+            size_hint: .70,.03
+            text: "Save"
+            font_size: 30
+            font_name: "Fonts/Nexa-Heavy.ttf"
+            pos_hint: {"center_x": .5, "center_y": 0.18}
+            md_bg_color: "4f5f80"
+            line_color: 0,0,0,0
+            text_color:"white"
+            on_release:
+                root.add_new_syrup()
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 0.1
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 0, -10
+                    spread_radius: -10, -10
+                    border_radius: 40, 40, 40, 40
+                    blur_radius: 40
+
+<MultiLineFloatLayout>:
+    size_hint_y: None
+    height: dp(100)
+    canvas.before:
+        Color:
+            rgba: 0,0,0,0.05
+        BoxShadow:
+            size:self.size
+            pos:self.pos
+            offset: 0, -10
+            spread_radius: -10, -10
+            border_radius: 40, 40, 40, 40
+            blur_radius: 40
+    canvas:
+        Color:
+            rgba: 1,1,1,1
+        RoundedRectangle:
+            size:self.size
+            pos:self.pos
+            radius: [(20, 20), (20, 20), (20, 20), (20, 20)]
+    MDLabel:
+        id: drink_text
+        text: "Iced Latte"
+        size_hint_y: None
+        text_color: "black"
+        font_name: "Fonts/Nexa-Heavy.ttf"
+        pos_hint:{"center_x":0.55,"center_y":0.70}
+    MDLabel:
+        id: ice_text
+        text: "Less Ice"
+        size_hint_y: None
+        text_color: "black"
+        font_name:"Fonts/Nexa-ExtraLight.ttf"
+        font_size: 25
+        pos_hint:{"center_x":0.55,"center_y":0.50}
+    MDLabel:
+        id: syrup_text
+        text: "Hazelnut"
+        size_hint_y: None
+        text_color: "black"
+        font_name:"Fonts/Nexa-ExtraLight.ttf"
+        font_size: 25
+        pos_hint:{"center_x":0.55,"center_y":0.30}
+    MDIconButton:
+        pos_hint: {"center_x": 0.9, "center_y": 0.25}
+        theme_icon_color: "Custom"
+        icon_color: "4f5f80"
+        icon: "plus"
+        icon_size: "12sp"
+        on_press: root.add(root)
+    MDLabel:
+        id: count_text
+        text:' '
+        font_size: 25
+        color: "black"
+        pos_hint: {"center_x": 1.265, "center_y": 0.25}
+        font_name: "Fonts/Nexa-Heavy.ttf"
+    MDIconButton:
+        pos_hint: {"center_x": 0.65, "center_y": 0.25}
+        icon_size: "12sp"
+        icon: "minus"
+        theme_icon_color: "Custom"
+        icon_color: "4f5f80"
+        on_press: root.subtract(root)
+
+
+<Order>:
+    id: order_template
+    size_hint_y: None
+    height: dp(100)
+    canvas.before:
+        Color:
+            rgba: 0,0,0,0.05
+        BoxShadow:
+            size:self.size
+            pos:self.pos
+            offset: 0, -10
+            spread_radius: -10, -10
+            border_radius: 40, 40, 40, 40
+            blur_radius: 40
+    canvas:
+        Color:
+            rgba: 1,1,1,1
+        RoundedRectangle:
+            size:self.size
+            pos:self.pos
+            radius: [(20, 20), (20, 20), (20, 20), (20, 20)]
+    MDLabel:
+        id: drink_spec
+        text: "Iced Latte"
+        size_hint_y: None
+        text_color: "black"
+        font_name: "Fonts/Nexa-Heavy.ttf"
+        pos_hint:{"center_x":0.55,"center_y":0.70}
+    MDLabel:
+        id: order_no
+        text:'#1'
+        font_size: 25
+        color: "black"
+        pos_hint: {"center_y": 0.7}
+        halign: "right"
+        font_name: "Fonts/Nexa-ExtraLight.ttf"
+        padding: 25
+    MDLabel:
+        id: ice_spec
+        text: "Less Ice"
+        size_hint_y: None
+        text_color: "black"
+        font_name:"Fonts/Nexa-ExtraLight.ttf"
+        font_size: 25
+        pos_hint:{"center_x":0.55,"center_y":0.50}
+    MDLabel:
+        id: syrup_spec
+        text: "Hazelnut"
+        size_hint_y: None
+        text_color: "black"
+        font_name:"Fonts/Nexa-ExtraLight.ttf"
+        font_size: 25
+        pos_hint:{"center_x":0.55,"center_y":0.30}
+    MDLabel:
+        id: count_spec
+        text:'10'
+        font_size: 25
+        color: "black"
+        pos_hint: {"center_x":1.30,"center_y":0.25}
+        font_name: "Fonts/Nexa-Heavy.ttf"
+    MDIconButton:
+        pos_hint: {"center_x": 0.9, "center_y": 0.25}
+        icon_size: "25sp"
+        icon: "check-circle"
+        theme_icon_color: "Custom"
+        icon_color: "4f5f80"
+        on_release: root.delete_layout(root)
+
+<MenuButton>:
+    id: menu_button
+    text: "No Ice"
+    text_color: "black"
+    size_hint_x: 1
+    line_color: "e9edf5"
+    font_name: "Fonts/Nexa-ExtraLight.ttf"
+    halign: "left"
+
+<FullOrder>:
+    id: order_cashier
+    size_hint_y: None
+    height: each_order_list.height + dp(50)
+    canvas.before:
+        Color:
+            rgba: 0,0,0,0.05
+        BoxShadow:
+            size:self.size
+            pos:self.pos
+            offset: 0, -10
+            spread_radius: -10, -10
+            border_radius: 40, 40, 40, 40
+            blur_radius: 40
+    canvas:
+        Color:
+            rgba: 1,1,1,1
+        RoundedRectangle:
+            size:self.size
+            pos:self.pos
+            radius: [(20, 20), (20, 20), (20, 20), (20, 20)]
+    MDLabel:
+        id: order_no
+        text:''
+        font_size: 30
+        color: "black"
+        pos_hint: {"center_y": 0.9}
+        halign: "left"
+        font_name: "Fonts/Nexa-Heavy.ttf"
+        padding: 35
+    CartModifiedList:
+        id: each_order_list
+        spacing:10
+        padding: 25
+        pos_hint: {"center_x": 0.5, "center_y": 0.43}
+        size_hint: 1,None
+    MDIconButton:
+        pos_hint: {"center_x": 0.9, "center_y": 0.9}
+        icon_size: "25sp"
+        icon: "check-circle"
+        theme_icon_color: "Custom"
+        icon_color: "4f5f80"
+        on_release:
+            root.delete_order(root)
+    MDIconButton:
+        pos_hint: {"center_x": 0.8, "center_y": 0.9}
+        icon_size: "25sp"
+        icon: "bell-circle"
+        theme_icon_color: "Custom"
+        icon_color: "4f5f80"
+        on_release:
+            root.send_whatsapp_message(root)
+
+<FullOrderModified>:
+    id: order_customer
+    size_hint_y: None
+    height: each_order_list.height + dp(50)
+    canvas.before:
+        Color:
+            rgba: 0,0,0,0.05
+        BoxShadow:
+            size:self.size
+            pos:self.pos
+            offset: 0, -10
+            spread_radius: -10, -10
+            border_radius: 40, 40, 40, 40
+            blur_radius: 40
+    canvas:
+        Color:
+            rgba: 1,1,1,1
+        RoundedRectangle:
+            size:self.size
+            pos:self.pos
+            radius: [(20, 20), (20, 20), (20, 20), (20, 20)]
+    MDLabel:
+        id: order_no
+        text:''
+        font_size: 30
+        color: "black"
+        pos_hint: {"center_y": 0.9}
+        halign: "left"
+        font_name: "Fonts/Nexa-Heavy.ttf"
+        padding: 35
+    CartModifiedList:
+        id: each_order_list
+        spacing:10
+        padding: 25
+        pos_hint: {"center_x": 0.5, "center_y": 0.43}
+        size_hint: 1,None
+
+<OrderModified>:
+    size_hint_y: None
+    height: dp(100)
+    canvas:
+        Color:
+            rgba: 0.9137, 0.9294, 0.9608, 0.4898
+        RoundedRectangle:
+            size:self.size
+            pos:self.pos
+            radius: [(20, 20), (20, 20), (20, 20), (20, 20)]
+    MDLabel:
+        id: drink_spec
+        text: ""
+        size_hint_y: None
+        text_color: "black"
+        font_name: "Fonts/Nexa-Heavy.ttf"
+        pos_hint:{"center_x":0.55,"center_y":0.70}
+    MDLabel:
+        id: amount_spec
+        text:''
+        font_size: 25
+        color: "black"
+        pos_hint: {"center_y": 0.7}
+        halign: "right"
+        font_name: "Fonts/Nexa-ExtraLight.ttf"
+        padding: 25
+    MDLabel:
+        id: ice_spec
+        text: ""
+        size_hint_y: None
+        text_color: "black"
+        font_name:"Fonts/Nexa-ExtraLight.ttf"
+        font_size: 25
+        pos_hint:{"center_x":0.55,"center_y":0.50}
+    MDLabel:
+        id: syrup_spec
+        text: ""
+        size_hint_y: None
+        text_color: "black"
+        font_name:"Fonts/Nexa-ExtraLight.ttf"
+        font_size: 25
+        pos_hint:{"center_x":0.55,"center_y":0.30}
+
+<VerificationCode>:
+    id: verification_template
+    MDFloatLayout:
+        size_hint: 1,1
+        pos_hint: {"center_x":0.5,"center_y":0.5}
+        canvas.before:
+            Color:
+                rgba: 0,0,0,0.1
+            BoxShadow:
+                pos: self.pos
+                size: self.size
+                offset: 0, 0
+                spread_radius: 10,10
+                border_radius: 40, 40, 40, 40
+                blur_radius: 40
+    MDFloatLayout:
+        size_hint: 0.7,0.4
+        pos_hint: {"center_x":0.5,"center_y":0.48}
+        canvas.before:
+            Color:
+                rgba: 0,0,0,0.1
+            BoxShadow:
+                pos: self.pos
+                size: self.size
+                offset: 0, -10
+                spread_radius: -10, -10
+                border_radius: 40, 40, 40, 40
+                blur_radius: 40
+        canvas:
+            Color:
+                rgba: 1,1,1,1
+            RoundedRectangle:
+                size:self.size
+                pos:self.pos
+                radius: [20]
+        MDLabel:
+            text: "Phone number Verification"
+            font_size: 30
+            color: "black"
+            pos_hint: {"center_x": 0.5,"center_y": 0.85}
+            size_hint: 0.8,1
+            halign: "left"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDLabel:
+            text: " "
+            id: title
+            font_size: 25
+            color: "black"
+            pos_hint: {"center_x": 0.5,"center_y": 0.72}
+            size_hint: 0.8,1
+            halign: "left"
+            font_name: "Fonts/Nexa-ExtraLight.ttf"
+        MDLabel:
+            text: "Verification code"
+            font_size: 22
+            color: "black"
+            pos_hint: {"center_x": 0.5,"center_y": 0.59}
+            size_hint: 0.8,1
+            halign: "left"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+        MDTextField:
+            id: code
+            radius: [10]
+            pos_hint: {"center_x": 0.5,"center_y": 0.46}
+            size_hint_x: 0.8
+            mode: "fill"
+            fill_color_normal: "e9edf5"
+            active_line: False
+            multiline: False
+            theme_text_color: "Custom"
+            text_color_normal: "black"
+            text_color_focus: "black"
+            on_text:
+                self.text = self.text.replace(" ","")
+                app.check_text_length(self, self.text)
+            write_tab: False
+        MDRectangleFlatButton:
+            radius: [10]
+            pos_hint: {"center_x": 0.71,"center_y": 0.28}
+            size_hint: 0.38,0.07
+            text: "Verify Code"
+            line_color: 0,0,0,0
+            text_color: "white"
+            md_bg_color: "4f5f80"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+            font_size: 25
+            on_release:
+                root.verify_code()
+        MDRectangleFlatButton:
+            radius: [10]
+            pos_hint: {"center_x": 0.29,"center_y": 0.28}
+            size_hint: 0.38,0.07
+            text: "Cancel"
+            line_color: "4f5f80"
+            text_color: "black"
+            md_bg_color: "white"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+            font_size: 25
+            on_release:
+                app.root.get_screen('customersignupscreen').remove_widget(root)
+        MDRectangleFlatButton:
+            radius: [10]
+            pos_hint: {"center_x": 0.5,"center_y": 0.15}
+            size_hint: 0.38,0.07
+            text: "Didn't get a code? Resend code"
+            line_color: 0,0,0,0
+            text_color: "4f5f80"
+            font_name: "Fonts/Nexa-Heavy.ttf"
+            font_size: 20
+            on_release:
+                root.resend_code()
+
+<SelectMenuButton>:
+    size_hint_y: None
+    height: dp(200)
+    line_color: 0,0,0,0
+    canvas.before:
+        Color:
+            rgba: 0,0,0,0.05
+        BoxShadow:
+            size:self.size
+            pos:self.pos
+            offset: 0, -10
+            spread_radius: -10, -10
+            border_radius: 40, 40, 40, 40
+            blur_radius: 40
+    canvas:
+        Color:
+            rgba: 1,1,1,1
+        RoundedRectangle:
+            size:self.size
+            pos:self.pos
+            radius: [(20, 20), (20, 20), (20, 20), (20, 20)]
+    MDRectangleFlatButton:
+        id: name
+        text: "Iced Latte"
+        size_hint_y: None
+        font_size: 30
+        text_color: "black"
+        font_name: "Fonts/Nexa-Heavy.ttf"
+        line_color: 0,0,0,0
+        pos_hint:{"center_x":0.5, "center_y":0.85}
+    Image:
+        id: drink_image
+        source: "images/logo.png"
+        size_hint_y: None
+        height: dp(90)
+        pos_hint: {"center_x":0.5, "center_y": 0.55}
+    MDLabel:
+        id: description
+        padding: 25
+        text: "This is the description for the drink above"
+        size_hint_y: None
+        font_size: 20
+        text_color: "black"
+        font_name: "Fonts/Nexa-ExtraLight.ttf"
+        pos_hint:{"center_x":0.5, "center_y":0.25}
+    MDIconButton:
+        id: add_to_cart
+        icon: "plus-circle"
+        pos_hint:{"center_x":0.9, "center_y":0.1}
+        theme_icon_color: "Custom"
+        icon_color: "4f5f80"
+        icon_size: "15sp"
+        on_release:
+            root.on_add_to_cart() if not root.ids.add_to_cart.disabled else None
+
+<EditMenuButton>:
+    size_hint_y: None
+    height: dp(200)
+    line_color: 0,0,0,0
+    canvas.before:
+        Color:
+            rgba: 0,0,0,0.05
+        BoxShadow:
+            size:self.size
+            pos:self.pos
+            offset: 0, -10
+            spread_radius: -10, -10
+            border_radius: 40, 40, 40, 40
+            blur_radius: 40
+    canvas:
+        Color:
+            rgba: 1,1,1,1
+        RoundedRectangle:
+            size:self.size
+            pos:self.pos
+            radius: [(20, 20), (20, 20), (20, 20), (20, 20)]
+    MDRectangleFlatButton:
+        id: name
+        text: "Iced Latte"
+        size_hint_y: None
+        font_size: 30
+        text_color: "black"
+        font_name: "Fonts/Nexa-Heavy.ttf"
+        line_color: 0,0,0,0
+        pos_hint:{"center_x":0.5, "center_y":0.85}
+    Image:
+        id: drink_image
+        source: "images/logo.png"
+        size_hint_y: None
+        height: dp(90)
+        pos_hint: {"center_x":0.5, "center_y": 0.55}
+    MDLabel:
+        id: description
+        padding: 25
+        text: "This is the description for the drink above"
+        size_hint_y: None
+        font_size: 20
+        text_color: "black"
+        font_name: "Fonts/Nexa-ExtraLight.ttf"
+        pos_hint:{"center_x":0.5, "center_y":0.25}
+    MDIconButton:
+        id: check_status
+        icon: "checkbox-blank-outline"
+        pos_hint:{"center_x":0.12, "center_y":0.1}
+        theme_icon_color: "Custom"
+        icon_color: "4f5f80"
+        icon_size: "15sp"
+        on_release:
+            root.toggle_checkbox(root)
+    MDIconButton:
+        icon: "pencil"
+        pos_hint:{"center_x":0.9, "center_y":0.1}
+        theme_icon_color: "Custom"
+        icon_color: "4f5f80"
+        icon_size: "15sp"
+        on_release:
+            app.root.transition.direction = "left"
+            app.root.current = "editdrinkscreen"
+            app.set_options(root.ids.name.text,root.ids.description.text)
+    MDIconButton:
+        icon: "trash-can"
+        pos_hint:{"center_x":0.9, "center_y":0.9}
+        theme_icon_color: "Custom"
+        icon_color: "4f5f80"
+        icon_size: "15sp"
+        on_release:
+            root.delete_menu_option(root)
+
+<SyrupButton>:
+    size_hint_y: None
+    height: dp(50)
+    line_color: 0,0,0,0
+    canvas:
+        Color:
+            rgba: 233/255, 237/255, 245/255, 1
+        RoundedRectangle:
+            size:self.size
+            pos:self.pos
+            radius: [(20, 20), (20, 20), (20, 20), (20, 20)]
+    MDLabel:
+        id: syrup_name
+        text: " "
+        text_color: "black"
+        font_name: "Fonts/Nexa-ExtraLight.ttf"
+        halign: "left"
+        pos_hint: {'center_x':0.6,'center_y':0.5}
+    MDIconButton:
+        icon: "trash-can"
+        pos_hint:{"center_x":0.9, "center_y":0.5}
+        theme_icon_color: "Custom"
+        icon_color: "4f5f80"
+        icon_size: "15sp"
+        on_release:
+            root.delete_syrup_option(root)
+
+
+
+
+
+
+
+
+
